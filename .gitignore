@@ -89,3 +89,7 @@ logs/
 # Temporary files
 tmp/
 temp/
+
+# others
+setup-git.bat
+setup-git.sh

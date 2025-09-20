@@ -10,10 +10,16 @@ if not exist ".git" (
     git init
 )
 
-REM Create initial commit
-echo Creating initial commit...
-git add .
-git commit -m "Initial commit: MLOps CI/CD Pipeline setup"
+REM Create initial commit (skip if already done)
+echo Checking if initial commit exists...
+git log --oneline -1 >nul 2>&1
+if %errorlevel% neq 0 (
+    echo Creating initial commit...
+    git add .
+    git commit -m "Initial commit: MLOps CI/CD Pipeline setup"
+) else (
+    echo Initial commit already exists, skipping...
+)
 
 REM Create and switch to dev branch
 echo Creating dev branch...
